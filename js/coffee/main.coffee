@@ -24,9 +24,21 @@
 
 app = angular.module('app', ['ngRoute']);
 
+configLoader = ['config', (config) ->
+	return config.load()
+]
+
+resolver = {configLoader: configLoader}
+
 app.config ['$locationProvider', '$routeProvider', ($locationProvider, $routeProvider) ->
-	$routeProvider.when('/', {templateUrl: "templates/pages/home/index.tpl", controller: 'HomePageController'});
-	$routeProvider.when('/loading', {templateUrl: "templates/pages/loading/index.tpl", controller: 'LoadingPageController'});
+	$routeProvider.when('/', {
+		templateUrl: "templates/pages/home/index.tpl",
+		controller: 'HomePageController',
+		resolve: resolver
+	});
+	$routeProvider.when('/error', {
+		templateUrl: "templates/pages/error/index.tpl",
+	});
 	$locationProvider.html5Mode(true);
 ]
 
@@ -41,6 +53,8 @@ app.directive('epitechTvBlock', () -> EpitechTvBlockDirectiveController.getConfi
 app.directive('playlist', () -> PlaylistDirectiveController.getConfig());
 app.directive('timeline', () -> TimelineDirectiveController.getConfig());
 
-app.run ['$location', ($location) =>
-	$location.path('/loading');
-]
+app.run(['$rootScope', '$location', ($rootScope, $location, city) ->
+	$rootScope.$on('$routeChangeError', (e) ->
+		$location.url("/error");
+	)
+]);

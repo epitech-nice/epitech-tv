@@ -24,12 +24,13 @@
 
 class ConfigServiceController
 
-	@factory = ['$http', ($http) ->
-		return new ConfigServiceController($http)
+	@factory = ['$http', '$location', ($http, $location) ->
+		return new ConfigServiceController($http, $location)
 	];
 
-	constructor: (@$http) ->
-		@epitechTvWsUrl =  'https://dl.dropboxusercontent.com/s/ozum0r8u7e374ej/epitechTv.json'
+	constructor: (@$http, @$location) ->
+		@promise = null;
+		@config = null;
 
 	getEpitechWsUrl: () ->
 		return @config.config['epitech-ws-url']
@@ -41,6 +42,13 @@ class ConfigServiceController
 		return @config.config.djYayo;
 
 	load: () ->
-		return @$http.get(@epitechTvWsUrl).success (data) =>
+		if @promise? then return @promise;
+		search = @$location.search();
+		if (not search.config?) then throw new Error('No config file specified');
+		config = search.config;
+		if (config.indexOf("http") == -1)
+			config = "http://#{config}";
+		@promise = @$http.get(config).success (data) =>
 			@config = data;
 			return true;
+		return @promise;

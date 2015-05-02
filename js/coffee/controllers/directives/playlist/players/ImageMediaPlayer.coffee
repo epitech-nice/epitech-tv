@@ -32,7 +32,10 @@ class ImageMediaPlayer extends AbstractMediaPlayer
 
 	play: (media) =>
 		@show();
-		@$scope.src = media.src;
+		src = media.src;
+		if (src.indexOf("http") == -1)
+			src = "http://#{src}";
+		@$scope.src = src;
 		return @timeout(media.time).finally () => @hide()
 
 jQuery () ->

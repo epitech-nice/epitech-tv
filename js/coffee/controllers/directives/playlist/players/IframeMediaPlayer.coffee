@@ -33,7 +33,7 @@ class IframeMediaPlayer extends AbstractMediaPlayer
 	play: (media) ->
 		@show();
 		src = media.src;
-		if (src.indexOf("http://") == -1)
+		if (src.indexOf("http") == -1)
 			src = "http://#{src}";
 		@$scope.src = @$sce.trustAsResourceUrl(src);
 		return @timeout(media.time).finally () => @hide();
