@@ -24,9 +24,9 @@
 
 class DoodleMediaPlayer extends AbstractMediaPlayer
 
-	@$inject = ['$scope', '$element', '$timeout', '$q', '$http']
+	@$inject = ['$scope', '$element', '$timeout', '$q', 'epitechWs']
 
-	constructor: (@$scope, $element, @$timeout, $q, @$http) ->
+	constructor: (@$scope, $element, @$timeout, $q, @epitechWs) ->
 		super($element, $q, @$timeout)
 		@$scope.title = null
 		@$scope.options = []
@@ -36,11 +36,10 @@ class DoodleMediaPlayer extends AbstractMediaPlayer
 	onTimeout: () =>
 		@$scope.options = [];
 		@promise = @$timeout(@onTimeout, 1000 * 60 * 10);
-		@$http.get("http://yayo.fr/doodle.php?id=#{@doodleId}").success (data) =>
-			if (data.code != 200) then throw data.msg;
-			@$scope.options = data.data;
+		@epitechWs.getDoodlePoll(@doodleId).then (data) =>
+			@$scope.options = data;
 			total = 0
-			for option in data.data
+			for option in data
 				total += option.count;
 			for option in @$scope.options
 				option.percent = Math.max(20, Math.floor((option.count / total) * 100));

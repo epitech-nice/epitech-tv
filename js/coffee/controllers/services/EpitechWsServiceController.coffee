@@ -45,6 +45,8 @@ class EpitechWsServiceController
 
 	getProjects: (scholarYear) ->
 
+	getDoodlePoll: (pollId) ->
+		return @query("doodle/#{pollId}");
 
 	getAllModules: (city, scholaryear) -> @query("#{city}/modules?year=#{scholaryear}");
 
