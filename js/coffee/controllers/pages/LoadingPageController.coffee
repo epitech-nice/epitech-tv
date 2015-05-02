@@ -23,6 +23,9 @@
 ##
 
 class LoadingPageController
+
+    @$inject = ['config', '$location']
+
     constructor: (@config, $location) ->
         @config.load().success () ->
             $location.path('/');
