@@ -8,6 +8,7 @@
         "gulp-coffee": "*",
         "gulp-concat": "*",
         "gulp-connect": "*",
+        "gulp-order": "*",
         "gulp-sass": "*",
         "gulp-minify-css": "*",
         "gulp-uglify": "*",
