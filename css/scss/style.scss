@@ -1,0 +1,56 @@
+$color1: #0069b3;
+$color2: #3696d9;
+$color3: #62a8d9;
+$color4: #004474;
+$fontColor: #345;
+
+@import "h2.scss";
+@import "directives/clock/style.scss";
+@import "directives/dj-yayo/style.scss";
+@import "directives/playlist/style.scss";
+@import "directives/timeline/style.scss";
+
+
+
+body {
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    min-width: 1920px;
+    min-height: 1080px;
+    @include h2($fontColor, #B7C6C9);
+}
+
+.row {
+    margin: 0;
+}
+
+#header {
+    padding: 10px;
+    height: 45%;
+    background: $color3;
+    @include h2(white, #DDE4E6, $color3);
+    overflow: hidden;
+    color: white;
+}
+
+#content {
+    height: 45%;
+    overflow: hidden;
+}
+
+#footer {
+    background: $color3;
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    overflow: hidden;
+
+    .logo {
+        display: inline-block;
+        height: 80px;
+        margin-left: 30px;
+        margin-top: 10px;
+        vertical-align: top;
+    }
+}

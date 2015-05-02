@@ -1,0 +1,18 @@
+div[timeline] {
+    .progress-bar-info {
+
+        background: $color1;
+        text-align: left;
+        position: relative;
+
+        span {
+            padding-left: 10px;
+        }
+
+        .countdown {
+            display: inline-block;
+            right: 10px;
+            position: absolute;
+        }
+    }
+}

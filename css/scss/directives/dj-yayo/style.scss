@@ -1,0 +1,42 @@
+div[dj-yayo] {
+    display: inline-block;
+
+    .track {
+        margin-left: 30px;
+        display: inline-block;
+        color: white;
+
+        img {
+            height: 100%;
+            display: inline-block;
+            margin-right: 20px;
+            vertical-align: top;
+        }
+
+        .info {
+            display: inline-block;
+        }
+
+        .title {
+            line-height: 66px;
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+
+        .artist {
+            line-height: 25px;
+            font-size: 1.5em;
+        }
+
+        &.next {
+            opacity: 0.5;
+        }
+    }
+
+    .nosong {
+        margin-left: 30px;
+        color: white;
+        font-size: 2em;
+        line-height: 100px;
+    }
+}

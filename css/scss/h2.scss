@@ -1,0 +1,39 @@
+@mixin h2($fontColor, $iconColor, $bgColor: white) {
+
+    h2 {
+        position: relative;
+        font-size: 1.5em;
+        margin-bottom: 1em;
+        color: $fontColor;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            border-bottom: 4px solid lighten($iconColor, 2%);
+        }
+
+        & > span {
+
+            .fa {
+                font-size: 22px;
+                margin-right: 16px;
+                line-height: 39px;
+                text-align: center;
+                color: $iconColor;
+                background: $bgColor;
+                border-radius: 50%;
+                border: 4px solid #dde4e6;
+                width: 47px;
+            }
+
+            position: relative;
+            display: inline-block;
+            padding-right: 1.4em;
+            background: $bgColor;
+            font-weight: 400;
+        }
+    }
+}

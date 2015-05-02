@@ -1,0 +1,18 @@
+div[playlist] {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    .player {
+        display: none;
+    }
+
+    @import "players/countdown.scss";
+    @import "players/html.scss";
+    @import "players/iframe.scss";
+    @import "players/image.scss";
+    @import "players/netsoul.scss";
+    @import "players/netsoulRank.scss";
+    @import "players/projectsTimelines.scss";
+    @import "players/youtube.scss";
+}

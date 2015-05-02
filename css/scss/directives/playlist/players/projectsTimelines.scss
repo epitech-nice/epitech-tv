@@ -1,0 +1,21 @@
+.projectsTimelinesMediaPlayer {
+
+    padding: 10px;
+
+    .progress {
+
+        background-color: #27ae60;
+        text-align: right;
+        color: white;
+        position: relative;
+
+        .progress-bar {
+            background-color: #e74c3c;
+        }
+
+        .countdown {
+            position: absolute;
+            padding-left: 10px;
+        }
+    }
+}
